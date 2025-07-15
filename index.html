@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: rgb(2, 2, 39);
+            color: white;
+            font-family:'Times New Roman', Times, serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        span{
+            color: rgb(218, 37, 246);
+        }
+        section{
+            /* height: 100vh; */
+            padding-top: 90px;
+        }
+         header{
+            top: 0;
+            position: fixed;
+            width: 100%;
+         }
+        nav{
+            width: 100%;
+            background-color: rgb(28, 14, 62);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 60px;
+            font-size: 20px;
+            z-index: 1000;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        nav ul{
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: aliceblue;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        nav ul li a:hover{
+            cursor: pointer;
+            color: purple;
+            
+            transform: scale(1.1);
+        }
+
+        nav ul li{
+            list-style-type: none;
+            margin: 0 30px;
+            transition: all ease 0.2;
+        }
+        nav .left{
+            padding-top: 10px;
+            font-size: 1.7rem;
+            transition: all ease-in-out 0.3;
+        }
+        nav .left p:hover{
+            transform: scale(1.2);
+        }
+
+        .first{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 150px;
+            
+        }
+        .first > div{
+            width: 30%;
+        }
+
+        .first .leftSection{
+            width: 40%;
+            font-size: 35px;
+            margin-left: 100px;
+            
+        }
+
+        .first .btns{
+            display: flex;
+            gap: 10px;
+            font-size: 15px;
+        }
+        .btns button{
+            background-color:rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            padding: 5px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            box-shadow: 0 4px 20px rgba(208, 202, 202, 0.5);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all ease 0.2;
+        }
+        .btns button:hover{
+            transform: scale(1.1);
+            background-color: white;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            color: black;
+        }
+
+        .btns a{
+            font-size: 15px;
+            text-decoration: none;
+            background-color:rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            padding: 5px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            box-shadow: 0 4px 20px rgba(208, 202, 202, 0.5);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all ease 0.2;
+        }
+        .btns a:hover{
+            transform: scale(1.1);
+            background-color: white;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            color: black;
+        }
+
+        .socials{
+            margin-top: 20px;
+            display: flex;
+            gap:15px;
+            font-size: 2rem;
+        }
+
+        .socials a:hover{
+            transform: translateY(-5px);
+            transition: all ease 0.1;
+        }
+        .bx {
+            color: #ff6600;
+        }
+
+        hr{
+            display: block;
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        
+
+
+/* end of home section code*/
+
+
+        .about{
+            max-width: 80vw;
+            margin: 0 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+        
+
+        .about .geninfo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .geninfo div{
+            width: 60%;
+        }
+
+        .geninfo .aboutleft{
+            width: 30%;
+            margin-left: 50px;
+        }
+        .geninfo .aboutleft img{
+            height: 22rem;
+            width: 20rem;
+            border-radius: 50%;
+            border: 1px solid wheat;
+            box-shadow: 0 4px 20px rgba(89, 9, 159, 0.5);
+            animation: glowShadow 2s infinite ease-in-out ;
+            
+        }
+        @keyframes glowShadow {
+            0% {
+                box-shadow: 0 4px 20px rgba(144, 15, 196, 0.5);
+            }
+            50% {
+                box-shadow: 0 4px 50px rgba(144, 15, 196, 0.9);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(144, 15, 196, 0.5);
+            }
+        }
+
+        .geninfo .aboutright {
+            width: 40%;
+        }
+
+        .geninfo .aboutright p{
+            font-size: 30px;
+        }
+
+        .skilldiv{
+            grid-template-columns: repeat(4, 1fr);
+            display: grid;
+            gap: 20px;
+            
+        }
+
+        .skilldiv::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .skilldiv::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+
+        .skilldiv .card {
+            min-width: 230px;
+            height: 200px;
+            flex-shrink: 0;
+            background-color: rgb(28, 14, 62);
+        }
+
+        .experience .horizontal{
+            display: flex;
+            background-color: white;
+            height: 2px;
+            width: 80vw;
+            margin: 50px 0;
+        }
+
+        .experience .vertical{
+            display: flex;
+            height: 30px;
+            width: 1px;
+            background-color: white;
+            margin: 0 90px;
+        }
+
+/* end of about me section code*/
+
+
+
+        .project{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 50px;
+        }
+        .projectdiv{
+            padding: 10px;
+            height: 20rem;
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #110e36;
+        }
+        
+        .projectdiv .left{
+            width: 40%;
+        }
+        .projectdiv .right{
+            width: 55%;
+        }
+
+        .projectdiv .left img{
+            height: 15rem;
+            width: 22rem;
+            border: 1px solid wheat;
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .projectdiv .right a{
+            font-size: 15px;
+            text-decoration: none;
+            background-color:rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            padding: 5px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            box-shadow: 0 4px 20px rgba(208, 202, 202, 0.5);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all ease 0.2;
+        }
+        .projectdiv .right a:hover{
+            transform: scale(1.1);
+            background-color: white;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            color: black;
+        }
+
+/* end of projects section code*/
+
+        .contact{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .message-container{
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            flex-direction: column;
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label{
+            font-size: 20px;
+        }
+        form input{
+            width: 25rem;
+        }
+        textarea{
+            margin-top: 30px;
+        }
+/* end of contact section code*/
+
+        footer{
+            padding-top: 30px;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            background-color: #110e36
+        }
+
+        footer .flex{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 30px;
+        }
+        footer li{
+            list-style-type: none;
+            padding: 5px 0;
+            
+        }
+        footer a{
+            color: white;
+            font-size: 15px;
+            font-weight: 200;
+            text-decoration: none !important;
+        }
+        footer .suggestion{
+            display: flex;
+            justify-content: right;
+            margin-right: 70px;
+            gap: 10px;
+        }
+        footer .suggestion input{
+            height: 40px;
+            width: 250px;
+            background-color: lightgrey;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+        footer .suggestion button{
+            background-color:rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px); /* glass blur */
+                -webkit-backdrop-filter: blur(10px);
+            padding: 5px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all ease 0.2;
+        }
+        footer .suggestion button:hover{
+            transform: scale(1.1);
+        }
+        footer .copy{
+            text-align: center;
+            padding-top: 20px;
+            font-size: 13px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="left"><p>Swapnil's Portfolio</p></div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+        <main>
+
+            <section class="first" id="home">
+                <div class="leftSection">
+                    Hi, my name is <span>Swapnil</span><br>
+                    <div>and I am passionate about</div>
+                    <div><span id="element"></span></div>
+
+                    <br>
+
+                    <div class="btns">
+                        <button>Download Resume</button>
+                        <a href="https://github.com/Swapnil182004" target="_blank">Visit Github</a>
+                    </div>
+
+                    <div class="socials">
+                        <a href="https://www.linkedin.com/in/swapnil-banerjee-4140a6309/"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://www.instagram.com/_xoxo.swapnil__/?hl=en"><i class='bx bxl-instagram' ></i></a>
+                        <a href=""><i class='bx bxl-twitter' ></i></a>
+                        <a href="https://github.com/Swapnil182004"><i class='bx bxl-github' ></i></a>
+                        <a href="https://www.youtube.com/@College365-u4k"><i class='bx bxl-youtube' ></i></a>
+                    </div>
+                </div>
+
+                <div class="rightSection">
+                    <img src="pngegg.png" alt="" width="120%">
+                </div><br>
+
+            </section>
+
+            <hr>
+
+            <section class="about" id="about" style="height: 200vw;">
+
+                <div class="geninfo">
+
+                    <div class="aboutleft">
+                        <img src="me.jpg" alt="">
+                    </div>
+
+                    <div class="aboutright">
+                        Hi, I'm Swapnil Banerjee — a passionate full-stack developer focused on building efficient, scalable, and user-friendly solutions. I specialize in Web & App Development using tools like Django, Flutter, and languages like C, Java, and Python.
+                        With a strong interest in emerging tech, I’m exploring Cloud Computing, Machine Learning, and Competitive Programming. I enjoy solving real-world problems and continuously learning to improve my craft.
+                        Let’s build something amazing together! 🚀
+                        
+                    </div>
+                </div>
+                <h1 style="font-size: 2.9rem;">Skills:-</h1>
+
+                <div class="skilldiv">
+
+                    
+
+                    <!-- bootstrap cards -->
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🔧 C</h5>
+                            <p class="card-text">Procedural, efficient, fast, low-level, memory, pointers, foundational, compiled, portable, structured.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">☕ Java</h5>
+                            <p class="card-text">Object-oriented, robust, platform-independent, verbose, secure, portable, multithreaded, versatile, compiled, backend.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🐍 Python</h5>
+                            <p class="card-text">High-level, readable, dynamic, versatile, scripting, AI-friendly, fast-prototyping, interpreted, clean, powerful.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🌐 HTML</h5>
+                            <p class="card-text">Markup, structure, semantic, web, tags, layout, static, content, essential, standardized.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🎨 CSS</h5>
+                            <p class="card-text">Styling, responsive, design, layout, modern, animations, fonts, gradients, flexbox, themes.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">⚙️ JavaScript</h5>
+                            <p class="card-text">Interactive, dynamic, event-driven, asynchronous, frontend, DOM, ES6, powerful, functional, browser-based.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🚀 7. Django</h5>
+                            <p class="card-text"> Full-stack, secure, fast, scalable, Python-based, ORM, MVC, RESTful, admin-panel, batteries-included.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🟩 Node.js</h5>
+                            <p class="card-text">Backend, scalable, event-driven, JavaScript-based, non-blocking, fast, real-time, lightweight, RESTful, asynchronous.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🐘 PHP</h5>
+                            <p class="card-text">Server-side, dynamic, web development, open-source, database-friendly, interpreted, CMS-ready, widely-used, secure, backend.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🍃 MongoDB</h5>
+                            <p class="card-text"> NoSQL, flexible, scalable, document-based, schema-less, JSON-like, fast, modern, cluster-ready, dynamic.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🐬 9. MySQL</h5>
+                            <p class="card-text">Relational, structured, reliable, performant, scalable, SQL-based, normalized, transactional, secure, efficient.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🐬 9. MySQL</h5>
+                            <p class="card-text">Relational, structured, reliable, performant, scalable, SQL-based, normalized, transactional, secure, efficient.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">📊 Project Management</h5>
+                            <p class="card-text">Planning, leadership, collaboration, timeline, goals, productivity, agile, communication, ownership, delegation.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">🧠 11. Git & GitHub</h5>
+                            <p class="card-text">Version-control, collaboration, branching, commits, open-source, history, PRs, merging, deployment, teamwork.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">📊 Project Management</h5>
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">📱 Flutter</h5>
+                            <p class="card-text"> Cross-platform, UI toolkit, fast, reactive, Dart-based, scalable, mobile-first, widget-driven, native-feel, performant.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="experience">
+                    <h1 style="font-size: 2.9rem;">Education & Experiences:-</h1>
+                    <div class="horizontal">
+
+                        <div class="vertical">
+                            <div style="margin-top: 50px; width: 160px; height: 30px;">
+                                <h4>🎓 Education</h4>
+                            <p>B.E. College Model School
+                            (HS), Graduated in 2023</p>
+                            </div>
+                        </div>
+                        
+                        <div class="vertical">
+                            <div style="margin-top: 50px; width: 160px; height: 30px;">
+                                <h4>🎓 Education</h4>
+                            <p>SurTech
+                            B.Tech in Computer Science and Engineering (AI & ML), 2023 – 2027</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical">
+                            <div style="margin-top: 50px; width: 160px; height: 30px;">
+                                <h4>💼 Experience</h4>
+                            <p>Project Manager – CODE MASTER
+                            Leading and managing technical projects, coordinating with team members.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <hr>
+
+
+    <section class="project" id="project">
+
+        <h1>Top Projects</h1>
+
+        <div class="projectdiv">
+            <div class="left"><img src="routine2.png" alt=""></div>
+
+            <div class="right">
+                <h3>1. Ai Routine Optimizer – Code Master Collaboration</h3>
+                <p> <b>Role:</b>Project Manager & Backend Developer
+                    <b>Tech Stack:</b> Django, Python, HTML/CSS, JavaScript, Twilio API <br>
+                    <b>Description:</b>
+                    An AI-driven faculty scheduling system built for a hackathon.
+
+                    Auto-updates classes if a faculty is absent
+
+                    Real-time routine display in dashboard
+
+                    Twilio SMS notifications for class changes</p>
+                <a href="https://github.com/Code-Master970/Automatic-AI-Class-Routine-Optimizer" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            </div>
+            
+        </div>
+
+        
+        <div class="projectdiv">
+            <div class="left"><img src="resturant.png" alt=""></div>
+
+            <div class="right">
+                <h3>2. Feane – Restaurant Website</h3>
+                <p> <b>Role:</b> Full Stack Developer
+                    <b>Tech Stack:</b> Django, HTML/CSS, JavaScript, Google Maps API, Twilio API <br>
+                    <b>Description:</b>
+                    
+                    Description:
+                    Stylish restaurant site with online table booking features:
+
+                    Form with name, date, time, number of guests
+
+                    Optional cab pickup request with Google Maps integration
+
+                    Predicts traffic and sends SMS alert before booking
+
+                    Admin dashboard to manage bookings and user feedback</p>
+                <a href="https://github.com/Swapnil182004/Feane-Restaurant-Project" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            </div>
+            
+        </div>
+
+
+        <div class="projectdiv">
+            <div class="left"><img src="bot.png" alt=""></div>
+
+            <div class="right">
+                <h3>3. CodeBot – AI Assistant for Students</h3>
+                <p> <b>Role:</b> Backend Developer
+                    <b>Tech Stack:</b> Python, Django, JavaScript, NLP, API <br>
+                    <b>Description:</b>
+                    Smart bot for answering academic and coding questions:
+
+                    Integrated into learning dashboard
+
+                    Supports natural language queries
+
+                    Future-ready for multilingual and voice input</p>
+                <a href="https://github.com/Swapnil182004/Codebot" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            </div>
+            
+        </div>
+
+
+        <div class="projectdiv">
+            <div class="left"><img src="royal fitness.png" alt=""></div>
+
+            <div class="right">
+                <h3>4. Royal Fitness (Gym Platform)</h3>
+                <p> <b>Role:</b> Frontend Developer
+                    <b>Tech Stack:</b> HTML, CSS, JavaScript <br>
+                    <b>Description:</b>
+                    A combined gym and restaurant system under one brand:
+
+                    Booking for gym slots and restaurant tables
+
+                    Feedback system with optional image upload
+
+                    User-friendly interface with admin control</p>
+                <a href="https://github.com/Swapnil182004/ROYAL-FITNESS" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            </div>
+            
+        </div>
+
+        <div class="projectdiv">
+            <div class="left"><img src="safar.png" height="40rem" width="1rem" alt=""></div>
+
+            <div class="right">
+                <h3>3. Safar – Travel Explorer App</h3>
+                <p> <b>Role:</b> Flutter Developer
+                    <b>Tech Stack:</b> Flutter, Firebase, Dart <br>
+                    <b>Description:</b>
+                    Mobile app to explore and post travel content by country:
+
+                    User profile with editable picture
+
+                    Add posts with country, image, caption
+
+                    Real-time filtering by country (lowercase saved, capitalized displayed)
+
+                    Backend via Firebase Firestore</p>
+                <a href="" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            </div>
+            
+        </div>
+
+    </section>
+
+    <hr>
+
+    <section class="contact" id="contact">
+        <h1 style="align-items: center; justify-content: center;">Feel free to drop a message:-</h1>
+
+        <div class="message-container">
+            <form action="">
+                <label for="sub">Subject</label>
+                <input type="text" id="sub" name="Subject" placeholder="Have a project,query...">
+
+                <label for="mail">Email</label>
+                <input type="text" id="mail" name="Subject" placeholder="your Email">
+
+                <textarea type="text" id="msg" name="Message" rows="6" placeholder="Type your message here..."></textarea>
+            </form>
+        </div>
+    </section>
+
+    <hr>
+
+        </main>
+    
+    
+    <footer>
+        <div class="flex">
+            <div class="footer-first">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-second">
+                <h4>Professional Profiles</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/swapnil-banerjee-4140a6309/">Linked In</a></li>
+                    <li><a href="https://github.com/Swapnil182004">Github</a></li>
+                    <li><a href="">Twitter X</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="footer-third">
+                <h4>Social Media</h4>
+                <ul>
+                    <li><a href="">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/_xoxo.swapnil__/?hl=en">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@College365-u4k">Youtube</a></li>
+                    <li><a href=""> </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-forth">
+                <h4>Contacts</h4>
+                <ul>
+                    <li><a href="">9674335906</a></li>
+                    <li><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSMSqJlbFSrmlKHcVnhGfNwMZhCjxMBQVLBvJQjHMgfKdNSCmpfRcwWkNWFgTGCdQBzgJSGc">swapnilbanerjee956@gmail.com</a></li>
+                    <li><a href=""> </a></li>
+                    <li><a href=""> </a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="suggestion">
+            <input type="text" placeholder="Any suggestions? ...">
+            <button>Send</button>
+        </div>
+
+        <p class="copy">&copy; Copyright 1999-2024 - All Rights Reserved | Swapnil's Portfolio</p>
+    </footer>
+    
+    <script>
+        var typed = new Typed('#element', {
+        strings: ['Web Development', 'App Development',"Cloud Computing", "Competitive Programming", "Machine Learning","Backend Development","Full-Stack Projects","Problem Solving","Learning New Frameworks"],
+        typeSpeed: 50,
+        loop: true
+        });
+    </script>
+</body>
+
+
+</html>
