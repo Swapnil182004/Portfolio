@@ -9,17 +9,670 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            background-color: rgb(2, 2, 39);
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        span {
+            color: rgb(218, 37, 246);
+        }
+
+        section {
+            padding: 2rem 1rem;
+            margin-top: 60px;
+        }
+
+        header {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            width: 100%;
+            background-color: rgb(28, 14, 62);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            font-size: 20px;
+            padding: 0 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li {
+            list-style-type: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: aliceblue;
+            font-size: 15px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            cursor: pointer;
+            color: purple;
+            transform: scale(1.1);
+        }
+
+        nav .left {
+            font-size: 1.7rem;
+            transition: all ease-in-out 0.3s;
+        }
+
+        nav .left p:hover {
+            transform: scale(1.1);
+        }
+
+        .first {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            min-height: 80vh;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+
+        .first .leftSection {
+            flex: 1;
+            min-width: 300px;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-align: center;
+        }
+
+        .first .rightSection {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .first .rightSection img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+        }
+
+        .first .btns {
+            display: flex;
+            gap: 10px;
+            font-size: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .btns button,
+        .btns a {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            box-shadow: 0 4px 20px rgba(208, 202, 202, 0.5);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all ease 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btns button:hover,
+        .btns a:hover {
+            transform: scale(1.05);
+            background-color: white;
+            color: black;
+        }
+
+        .socials {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            font-size: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .socials a:hover {
+            transform: translateY(-5px);
+            transition: all ease 0.1s;
+        }
+
+        .bx {
+            color: #ff6600;
+        }
+
+        hr {
+            display: block;
+            width: min(50%, 500px);
+            margin: 2rem auto;
+        }
+
+        .about {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .about .geninfo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .geninfo .aboutleft {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .geninfo .aboutleft img {
+            width: min(20rem, 80vw);
+            height: min(22rem, 80vw);
+            border-radius: 50%;
+            border: 1px solid wheat;
+            box-shadow: 0 4px 20px rgba(89, 9, 159, 0.5);
+            animation: glowShadow 2s infinite ease-in-out;
+            object-fit: cover;
+        }
+
+        @keyframes glowShadow {
+            0% { box-shadow: 0 4px 20px rgba(144, 15, 196, 0.5); }
+            50% { box-shadow: 0 4px 50px rgba(144, 15, 196, 0.9); }
+            100% { box-shadow: 0 4px 20px rgba(144, 15, 196, 0.5); }
+        }
+
+        .geninfo .aboutright {
+            flex: 2;
+            min-width: 300px;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+        }
+
+        .skilldiv {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .skilldiv .card {
+            background-color: rgb(28, 14, 62);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skilldiv .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .experience h1 {
+            font-size: clamp(1.5rem, 4vw, 2.9rem);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .experience .horizontal {
+            display: flex;
+            background-color: white;
+            height: 2px;
+            width: 100%;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .experience .vertical {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 150px;
+            width: 200px;
+            margin-top: -75px;
+            background-color: transparent;
+        }
+
+        .experience .vertical:nth-child(1) { left: 10%; }
+        .experience .vertical:nth-child(2) { left: 40%; }
+        .experience .vertical:nth-child(3) { left: 70%; }
+
+        .experience .vertical::before {
+            content: '';
+            width: 2px;
+            height: 100px;
+            background-color: white;
+            margin-bottom: 10px;
+        }
+
+        .experience .vertical div {
+            background-color: rgb(28, 14, 62);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-align: center;
+        }
+
+        .projectdiv {
+            padding: 1rem;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #110e36;
+            border-radius: 10px;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .projectdiv .left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .projectdiv .right {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .projectdiv .left img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 1px solid wheat;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .projectdiv .right a {
+            font-size: 15px;
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            box-shadow: 0 4px 20px rgba(208, 202, 202, 0.5);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all ease 0.2s;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .projectdiv .right a:hover {
+            transform: scale(1.05);
+            background-color: white;
+            color: black;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 2rem;
+        }
+
+        .contact h1 {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .message-container {
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+            flex-direction: column;
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        form label {
+            font-size: 18px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        form button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: rgb(118, 43, 226);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 2rem;
+            background-color: #110e36;
+            margin-top: 2rem;
+        }
+
+        footer .flex {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer h4 {
+            margin-bottom: 1rem;
+            color: rgb(218, 37, 246);
+        }
+
+        footer li {
+            list-style-type: none;
+            padding: 5px 0;
+        }
+
+        footer a {
+            color: white;
+            font-size: 15px;
+            font-weight: 200;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: rgb(218, 37, 246);
+        }
+
+        footer .suggestion {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        footer .suggestion input {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            height: 40px;
+            background-color: lightgrey;
+            border: none;
+            border-radius: 5px;
+            padding: 0 10px;
+            color: black;
+        }
+
+        footer .suggestion button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 400;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.655);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all ease 0.2s;
+        }
+
+        footer .suggestion button:hover {
+            transform: scale(1.05);
+            background-color: white;
+            color: black;
+        }
+
+        footer .copy {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 13px;
+            color: gray;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav {
+                flex-direction: column;
+                height: auto;
+            }
+
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                background-color: rgb(28, 14, 62);
+                padding: 1rem 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .first {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .geninfo {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .geninfo .aboutleft {
+                order: 1;
+            }
+
+            .geninfo .aboutright {
+                order: 2;
+                text-align: center;
+            }
+
+            .skilldiv {
+                grid-template-columns: 1fr;
+            }
+
+            .experience .vertical {
+                position: static;
+                width: 100%;
+                margin: 1rem 0;
+            }
+
+            .experience .vertical::before {
+                display: none;
+            }
+
+            .experience .horizontal {
+                display: none;
+            }
+
+            .projectdiv {
+                flex-direction: column;
+            }
+
+            .projectdiv .left,
+            .projectdiv .right {
+                width: 100%;
+            }
+
+            section {
+                margin-top: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            nav .left {
+                font-size: 1.2rem;
+            }
+
+            .first .leftSection {
+                font-size: 1.5rem;
+            }
+
+            .socials {
+                font-size: 1.5rem;
+            }
+
+            .skilldiv {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .projectdiv {
+                padding: 1rem;
+            }
+
+            footer .flex {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            footer .suggestion {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer .suggestion input {
+                width: 100%;
+                max-width: none;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            body {
+                background-color: black;
+                color: white;
+            }
+            
+            .card {
+                border: 2px solid white;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <header>
         <nav>
             <div class="left"><p>Swapnil's Portfolio</p></div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <div class="right">
-                <ul>
+                <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Me</a></li>
                     <li><a href="#project">Projects</a></li>
@@ -29,352 +682,281 @@
         </nav>
     </header>
 
-        <main>
+    <main>
+        <section class="first" id="home">
+            <div class="leftSection">
+                Hi, I am <span>Swapnil</span><br>
+                <div> passionate about</div>
+                <div><span id="element"></span></div>
 
-            <section class="first" id="home">
-                <div class="leftSection">
-                    Hi, my name is <span>Swapnil</span><br>
-                    <div>and I am passionate about</div>
-                    <div><span id="element"></span></div>
+                <div class="btns">
+                    <button>Download Resume</button>
+                    <a href="https://github.com/Swapnil182004" target="_blank">Visit Github</a>
+                </div>
 
-                    <br>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/swapnil-banerjee-4140a6309/"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.instagram.com/_xoxo.swapnil__/?hl=en"><i class='bx bxl-instagram'></i></a>
+                    <a href=""><i class='bx bxl-twitter'></i></a>
+                    <a href="https://github.com/Swapnil182004"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.youtube.com/@College365-u4k"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
 
-                    <div class="btns">
-                        <button>Download Resume</button>
-                        <a href="https://github.com/Swapnil182004" target="_blank">Visit Github</a>
-                    </div>
+            <div class="rightSection">
+                <img src="pngegg.png" alt="Profile Image">
+            </div>
+        </section>
 
-                    <div class="socials">
-                        <a href="https://www.linkedin.com/in/swapnil-banerjee-4140a6309/"><i class='bx bxl-linkedin'></i></a>
-                        <a href="https://www.instagram.com/_xoxo.swapnil__/?hl=en"><i class='bx bxl-instagram' ></i></a>
-                        <a href=""><i class='bx bxl-twitter' ></i></a>
-                        <a href="https://github.com/Swapnil182004"><i class='bx bxl-github' ></i></a>
-                        <a href="https://www.youtube.com/@College365-u4k"><i class='bx bxl-youtube' ></i></a>
+        <hr>
+
+        <section class="about" id="about">
+            <div class="geninfo">
+                <div class="aboutleft">
+                    <img src="me.jpg" alt="About Me">
+                </div>
+
+                <div class="aboutright">
+                    Hi, I'm Swapnil Banerjee — a passionate full-stack developer focused on building efficient, scalable, and user-friendly solutions. I specialize in Web & App Development using tools like Django, Flutter, and languages like C, Java, and Python.
+                    With a strong interest in emerging tech, I'm exploring Cloud Computing, Machine Learning, and Competitive Programming. I enjoy solving real-world problems and continuously learning to improve my craft.
+                    Let's build something amazing together! 🚀
+                </div>
+            </div>
+
+            <h1>Skills</h1>
+
+            <div class="skilldiv">
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🔧 C</h5>
+                        <p class="card-text">Procedural, efficient, fast, low-level, memory, pointers, foundational, compiled, portable, structured.</p>
                     </div>
                 </div>
 
-                <div class="rightSection">
-                    <img src="pngegg.png" alt="" width="120%">
-                </div><br>
-
-            </section>
-
-            <hr>
-
-            <section class="about" id="about" style="height: 200vw;">
-
-                <div class="geninfo">
-
-                    <div class="aboutleft">
-                        <img src="me.jpg" alt="">
-                    </div>
-
-                    <div class="aboutright">
-                        Hi, I'm Swapnil Banerjee — a passionate full-stack developer focused on building efficient, scalable, and user-friendly solutions. I specialize in Web & App Development using tools like Django, Flutter, and languages like C, Java, and Python.
-                        With a strong interest in emerging tech, I’m exploring Cloud Computing, Machine Learning, and Competitive Programming. I enjoy solving real-world problems and continuously learning to improve my craft.
-                        Let’s build something amazing together! 🚀
-                        
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">☕ Java</h5>
+                        <p class="card-text">Object-oriented, robust, platform-independent, verbose, secure, portable, multithreaded, versatile, compiled, backend.</p>
                     </div>
                 </div>
-                <h1 style="font-size: 2.9rem;">Skills:-</h1>
 
-                <div class="skilldiv">
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🐍 Python</h5>
+                        <p class="card-text">High-level, readable, dynamic, versatile, scripting, AI-friendly, fast-prototyping, interpreted, clean, powerful.</p>
+                    </div>
+                </div>
 
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🌐 HTML</h5>
+                        <p class="card-text">Markup, structure, semantic, web, tags, layout, static, content, essential, standardized.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🎨 CSS</h5>
+                        <p class="card-text">Styling, responsive, design, layout, modern, animations, fonts, gradients, flexbox, themes.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">⚙️ JavaScript</h5>
+                        <p class="card-text">Interactive, dynamic, event-driven, asynchronous, frontend, DOM, ES6, powerful, functional, browser-based.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🚀 Django</h5>
+                        <p class="card-text">Full-stack, secure, fast, scalable, Python-based, ORM, MVC, RESTful, admin-panel, batteries-included.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🟩 Node.js</h5>
+                        <p class="card-text">Backend, scalable, event-driven, JavaScript-based, non-blocking, fast, real-time, lightweight, RESTful, asynchronous.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🐘 PHP</h5>
+                        <p class="card-text">Server-side, dynamic, web development, open-source, database-friendly, interpreted, CMS-ready, widely-used, secure, backend.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🍃 MongoDB</h5>
+                        <p class="card-text">NoSQL, flexible, scalable, document-based, schema-less, JSON-like, fast, modern, cluster-ready, dynamic.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🐬 MySQL</h5>
+                        <p class="card-text">Relational, structured, reliable, performant, scalable, SQL-based, normalized, transactional, secure, efficient.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">📊 Project Management</h5>
+                        <p class="card-text">Planning, leadership, collaboration, timeline, goals, productivity, agile, communication, ownership, delegation.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🧠 Git & GitHub</h5>
+                        <p class="card-text">Version-control, collaboration, branching, commits, open-source, history, PRs, merging, deployment, teamwork.</p>
+                    </div>
+                </div>
+
+                <div class="card text-bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">📱 Flutter</h5>
+                        <p class="card-text">Cross-platform, UI toolkit, fast, reactive, Dart-based, scalable, mobile-first, widget-driven, native-feel, performant.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <h1>Education & Experiences</h1>
+                <div class="horizontal">
+                    <div class="vertical">
+                        <div>
+                            <h4>🎓 Education</h4>
+                            <p>B.E. College Model School (HS), Graduated in 2023</p>
+                        </div>
+                    </div>
                     
-
-                    <!-- bootstrap cards -->
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🔧 C</h5>
-                            <p class="card-text">Procedural, efficient, fast, low-level, memory, pointers, foundational, compiled, portable, structured.</p>
+                    <div class="vertical">
+                        <div>
+                            <h4>🎓 Education</h4>
+                            <p>SurTech B.Tech in Computer Science and Engineering (AI & ML), 2023 – 2027</p>
                         </div>
                     </div>
 
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">☕ Java</h5>
-                            <p class="card-text">Object-oriented, robust, platform-independent, verbose, secure, portable, multithreaded, versatile, compiled, backend.</p>
+                    <div class="vertical">
+                        <div>
+                            <h4>💼 Experience</h4>
+                            <p>Project Manager – CODE MASTER Leading and managing technical projects, coordinating with team members.</p>
                         </div>
                     </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🐍 Python</h5>
-                            <p class="card-text">High-level, readable, dynamic, versatile, scripting, AI-friendly, fast-prototyping, interpreted, clean, powerful.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🌐 HTML</h5>
-                            <p class="card-text">Markup, structure, semantic, web, tags, layout, static, content, essential, standardized.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🎨 CSS</h5>
-                            <p class="card-text">Styling, responsive, design, layout, modern, animations, fonts, gradients, flexbox, themes.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">⚙️ JavaScript</h5>
-                            <p class="card-text">Interactive, dynamic, event-driven, asynchronous, frontend, DOM, ES6, powerful, functional, browser-based.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🚀 Django</h5>
-                            <p class="card-text"> Full-stack, secure, fast, scalable, Python-based, ORM, MVC, RESTful, admin-panel, batteries-included.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🟩 Node.js</h5>
-                            <p class="card-text">Backend, scalable, event-driven, JavaScript-based, non-blocking, fast, real-time, lightweight, RESTful, asynchronous.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🐘 PHP</h5>
-                            <p class="card-text">Server-side, dynamic, web development, open-source, database-friendly, interpreted, CMS-ready, widely-used, secure, backend.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🍃 MongoDB</h5>
-                            <p class="card-text"> NoSQL, flexible, scalable, document-based, schema-less, JSON-like, fast, modern, cluster-ready, dynamic.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🐬 MySQL</h5>
-                            <p class="card-text">Relational, structured, reliable, performant, scalable, SQL-based, normalized, transactional, secure, efficient.</p>
-                        </div>
-                    </div>
-
-                    
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">📊 Project Management</h5>
-                            <p class="card-text">Planning, leadership, collaboration, timeline, goals, productivity, agile, communication, ownership, delegation.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">🧠 Git & GitHub</h5>
-                            <p class="card-text">Version-control, collaboration, branching, commits, open-source, history, PRs, merging, deployment, teamwork.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title">📱 Flutter</h5>
-                            <p class="card-text"> Cross-platform, UI toolkit, fast, reactive, Dart-based, scalable, mobile-first, widget-driven, native-feel, performant.</p>
-                        </div>
-                    </div>
-
                 </div>
+            </div>
+        </section>
 
-                <div class="experience">
-                    <h1 style="font-size: 2.9rem;">Education & Experiences:-</h1>
-                    <div class="horizontal">
+        <hr style="margin-top: 12rem;">
 
-                        <div class="vertical">
-                            <div style="margin-top: 50px; width: 160px; height: 30px;">
-                                <h4>🎓 Education</h4>
-                            <p>B.E. College Model School
-                            (HS), Graduated in 2023</p>
-                            </div>
-                        </div>
-                        
-                        <div class="vertical">
-                            <div style="margin-top: 50px; width: 160px; height: 30px;">
-                                <h4>🎓 Education</h4>
-                            <p>SurTech
-                            B.Tech in Computer Science and Engineering (AI & ML), 2023 – 2027</p>
-                            </div>
-                        </div>
+        <section class="project" id="project">
+            <h1 style="margin-top: 5rem;">Top Projects</h1>
 
-                        <div class="vertical">
-                            <div style="margin-top: 50px; width: 160px; height: 30px;">
-                                <h4>💼 Experience</h4>
-                            <p>Project Manager – CODE MASTER
-                            Leading and managing technical projects, coordinating with team members.</p>
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="projectdiv">
+                <div class="left">
+                    <img src="routine2.png" alt="AI Routine Optimizer">
                 </div>
-
-            </section>
-
-            <hr>
-
-
-    <section class="project" id="project">
-
-        <h1>Top Projects</h1>
-
-        <div class="projectdiv">
-            <div class="left"><img src="routine2.png" alt=""></div>
-
-            <div class="right">
-                <h3>1. Ai Routine Optimizer – Code Master Collaboration</h3>
-                <p> <b>Role:</b>Project Manager & Backend Developer
-                    <b>Tech Stack:</b> Django, Python, HTML/CSS, JavaScript, Twilio API <br>
-                    <b>Description:</b>
-                    An AI-driven faculty scheduling system built for a hackathon.
-
-                    Auto-updates classes if a faculty is absent
-
-                    Real-time routine display in dashboard
-
-                    Twilio SMS notifications for class changes</p>
-                <a href="https://github.com/Code-Master970/Automatic-AI-Class-Routine-Optimizer" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+                <div class="right">
+                    <h3>1. AI Routine Optimizer – Code Master Collaboration</h3>
+                    <p><b>Role:</b> Project Manager & Backend Developer<br>
+                    <b>Tech Stack:</b> Django, Python, HTML/CSS, JavaScript, Twilio API<br>
+                    <b>Description:</b> An AI-driven faculty scheduling system built for a hackathon. Auto-updates classes if a faculty is absent. Real-time routine display in dashboard. Twilio SMS notifications for class changes.</p>
+                    <a href="https://github.com/Code-Master970/Automatic-AI-Class-Routine-Optimizer" target="_blank">
+                        <img src="git.png" alt="GitHub" style="border-radius: 50%; margin-right: 5px;">View Repository
+                    </a>
+                </div>
             </div>
-            
-        </div>
 
-        
-        <div class="projectdiv">
-            <div class="left"><img src="resturant.png" alt=""></div>
-
-            <div class="right">
-                <h3>2. Feane – Restaurant Website</h3>
-                <p> <b>Role:</b> Full Stack Developer
-                    <b>Tech Stack:</b> Django, HTML/CSS, JavaScript, Google Maps API, Twilio API <br>
-                    <b>Description:</b>
-                    
-                    Description:
-                    Stylish restaurant site with online table booking features:
-
-                    Form with name, date, time, number of guests
-
-                    Optional cab pickup request with Google Maps integration
-
-                    Predicts traffic and sends SMS alert before booking
-
-                    Admin dashboard to manage bookings and user feedback</p>
-                <a href="https://github.com/Swapnil182004/Feane-Restaurant-Project" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            <div class="projectdiv">
+                <div class="left">
+                    <img src="resturant.png" alt="Restaurant Website">
+                </div>
+                <div class="right">
+                    <h3>2. Feane – Restaurant Website</h3>
+                    <p><b>Role:</b> Full Stack Developer<br>
+                    <b>Tech Stack:</b> Django, HTML/CSS, JavaScript, Google Maps API, Twilio API<br>
+                    <b>Description:</b> Stylish restaurant site with online table booking features. Form with name, date, time, number of guests. Optional cab pickup request with Google Maps integration. Predicts traffic and sends SMS alert before booking.</p>
+                    <a href="https://github.com/Swapnil182004/Feane-Restaurant-Project" target="_blank">
+                        <img src="git.png" alt="GitHub" style="border-radius: 50%; margin-right: 5px;">View Repository
+                    </a>
+                </div>
             </div>
-            
-        </div>
 
-
-        <div class="projectdiv">
-            <div class="left"><img src="bot.png" alt=""></div>
-
-            <div class="right">
-                <h3>3. CodeBot – AI Assistant for Students</h3>
-                <p> <b>Role:</b> Backend Developer
-                    <b>Tech Stack:</b> Python, Django, JavaScript, NLP, API <br>
-                    <b>Description:</b>
-                    Smart bot for answering academic and coding questions:
-
-                    Integrated into learning dashboard
-
-                    Supports natural language queries
-
-                    Future-ready for multilingual and voice input</p>
-                <a href="https://github.com/Swapnil182004/Codebot" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            <div class="projectdiv">
+                <div class="left">
+                    <img src="bot.png" alt="CodeBot AI">
+                </div>
+                <div class="right">
+                    <h3>3. CodeBot – AI Assistant for Students</h3>
+                    <p><b>Role:</b> Backend Developer<br>
+                    <b>Tech Stack:</b> Python, Django, JavaScript, NLP, API<br>
+                    <b>Description:</b> Smart bot for answering academic and coding questions. Integrated into learning dashboard. Supports natural language queries. Future-ready for multilingual and voice input.</p>
+                    <a href="https://github.com/Swapnil182004/Codebot" target="_blank">
+                        <img src="git.png" alt="GitHub" style="border-radius: 50%; margin-right: 5px;">View Repository
+                    </a>
+                </div>
             </div>
-            
-        </div>
 
-
-        <div class="projectdiv">
-            <div class="left"><img src="royal fitness.png" alt=""></div>
-
-            <div class="right">
-                <h3>4. Royal Fitness (Gym Platform)</h3>
-                <p> <b>Role:</b> Frontend Developer
-                    <b>Tech Stack:</b> HTML, CSS, JavaScript <br>
-                    <b>Description:</b>
-                    A combined gym and restaurant system under one brand:
-
-                    Booking for gym slots and restaurant tables
-
-                    Feedback system with optional image upload
-
-                    User-friendly interface with admin control</p>
-                <a href="https://github.com/Swapnil182004/ROYAL-FITNESS" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            <div class="projectdiv">
+                <div class="left">
+                    <img src="royal fitness.png" alt="Royal Fitness">
+                </div>
+                <div class="right">
+                    <h3>4. Royal Fitness (Gym Platform)</h3>
+                    <p><b>Role:</b> Frontend Developer<br>
+                    <b>Tech Stack:</b> HTML, CSS, JavaScript<br>
+                    <b>Description:</b> A combined gym and restaurant system under one brand. Booking for gym slots and restaurant tables. Feedback system with optional image upload. User-friendly interface with admin control.</p>
+                    <a href="https://github.com/Swapnil182004/ROYAL-FITNESS" target="_blank">
+                        <img src="git.png" alt="GitHub" style="border-radius: 50%; margin-right: 5px;">View Repository
+                    </a>
+                </div>
             </div>
-            
-        </div>
 
-        <div class="projectdiv">
-            <div class="left"><img src="safar.png" height="40rem" width="1rem" alt=""></div>
-
-            <div class="right">
-                <h3>3. Safar – Travel Explorer App</h3>
-                <p> <b>Role:</b> Flutter Developer
-                    <b>Tech Stack:</b> Flutter, Firebase, Dart <br>
-                    <b>Description:</b>
-                    Mobile app to explore and post travel content by country:
-
-                    User profile with editable picture
-
-                    Add posts with country, image, caption
-
-                    Real-time filtering by country (lowercase saved, capitalized displayed)
-
-                    Backend via Firebase Firestore</p>
-                <a href="" target="_blank"><img src="git.png" alt="" height="23px" width="23px" style="border-radius: 50%;">View Repository</a>
+            <div class="projectdiv">
+                <div class="left">
+                    <img src="safar.png" alt="Safar Travel App">
+                </div>
+                <div class="right">
+                    <h3>5. Safar – Travel Explorer App</h3>
+                    <p><b>Role:</b> Flutter Developer<br>
+                    <b>Tech Stack:</b> Flutter, Firebase, Dart<br>
+                    <b>Description:</b> Mobile app to explore and post travel content by country. User profile with editable picture. Add posts with country, image, caption. Real-time filtering by country (lowercase saved, capitalized displayed). Backend via Firebase Firestore.</p>
+                    <a href="#" target="_blank">
+                        <img src="git.png" alt="GitHub" style="border-radius: 50%; margin-right: 5px;">View Repository
+                    </a>
+                </div>
             </div>
-            
-        </div>
+        </section>
 
-    </section>
+        <hr>
 
-    <hr>
+        <section class="contact" id="contact">
+            <h1>Feel free to drop a message</h1>
 
-    <section class="contact" id="contact">
-        <h1 style="align-items: center; justify-content: center;">Feel free to drop a message:-</h1>
+            <div class="message-container">
+                <form action="">
+                    <label for="sub">Subject</label>
+                    <input type="text" id="sub" name="Subject" placeholder="Have a project, query...">
 
-        <div class="message-container">
-            <form action="">
-                <label for="sub">Subject</label>
-                <input type="text" id="sub" name="Subject" placeholder="Have a project,query...">
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail" name="Email" placeholder="Your Email">
 
-                <label for="mail">Email</label>
-                <input type="text" id="mail" name="Subject" placeholder="your Email">
+                    <label for="msg">Message</label>
+                    <textarea id="msg" name="Message" rows="6" placeholder="Type your message here..."></textarea>
 
-                <textarea type="text" id="msg" name="Message" rows="6" placeholder="Type your message here..."></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
 
-                <button type="submit" style=" margin-top: 10px; padding: 5px; background-color: blueviolet; color: white; border-radius: 10px;">Send</button>
-            </form>
-        </div>
-    </section>
+        <hr>
+    </main>
 
-    <hr>
-
-        </main>
-    
-    
     <footer>
         <div class="flex">
             <div class="footer-first">
@@ -390,10 +972,9 @@
             <div class="footer-second">
                 <h4>Professional Profiles</h4>
                 <ul>
-                    <li><a href="https://www.linkedin.com/in/swapnil-banerjee-4140a6309/">Linked In</a></li>
+                    <li><a href="https://www.linkedin.com/in/swapnil-banerjee-4140a6309/">LinkedIn</a></li>
                     <li><a href="https://github.com/Swapnil182004">Github</a></li>
                     <li><a href="">Twitter X</a></li>
-                    
                 </ul>
             </div>
 
@@ -403,39 +984,96 @@
                     <li><a href="">Facebook</a></li>
                     <li><a href="https://www.instagram.com/_xoxo.swapnil__/?hl=en">Instagram</a></li>
                     <li><a href="https://www.youtube.com/@College365-u4k">Youtube</a></li>
-                    <li><a href=""> </a></li>
                 </ul>
             </div>
 
             <div class="footer-forth">
                 <h4>Contacts</h4>
                 <ul>
-                    <li><a href="">9674335906</a></li>
-                    <li><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSMSqJlbFSrmlKHcVnhGfNwMZhCjxMBQVLBvJQjHMgfKdNSCmpfRcwWkNWFgTGCdQBzgJSGc">swapnilbanerjee956@gmail.com</a></li>
-                    <li><a href=""> </a></li>
-                    <li><a href=""> </a></li>
+                    <li><a href="tel:9674335906">9674335906</a></li>
+                    <li><a href="mailto:swapnilbanerjee956@gmail.com">swapnilbanerjee956@gmail.com</a></li>
                 </ul>
-
             </div>
-
         </div>
 
         <div class="suggestion">
-            <input type="text" placeholder="Any suggestions? ...">
-            <button>Send</button>
+            <input type="text" placeholder="Any suggestions?...">
+            <button type="button">Send</button>
         </div>
 
         <p class="copy">&copy; Copyright 1999-2024 - All Rights Reserved | Swapnil's Portfolio</p>
     </footer>
-    
+
     <script>
+        // Mobile menu toggle functionality
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('nav-menu');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Typed.js initialization
         var typed = new Typed('#element', {
-        strings: ['Web Development', 'App Development',"Cloud Computing", "Competitive Programming", "Machine Learning","Backend Development","Full-Stack Projects","Problem Solving","Learning New Frameworks"],
-        typeSpeed: 50,
-        loop: true
+            strings: ['Web Development', 'App Development', "Cloud Computing", "Competitive Programming", "Machine Learning", "Backend Development", "Full-Stack Projects", "Problem Solving", "Learning New Frameworks"],
+            typeSpeed: 50,
+            loop: true
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(28, 14, 62, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = 'rgb(28, 14, 62)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .projectdiv, .geninfo').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
-
-
 </html>
